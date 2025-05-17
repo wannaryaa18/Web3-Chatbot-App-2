@@ -1,0 +1,284 @@
+/* CSS Variables for Colors */
+:root {
+    --primary-color: #4a90e2; /* Biru */
+    --secondary-color: #f8e71c; /* Kuning (contoh, bisa diganti) */
+    --bot-message-bg: #eef2f7; /* Abu-abu kebiruan muda */
+    --user-message-bg: #cfe2ff; /* Biru sangat muda */
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --gradient-start: #6a11cb; /* Ungu */
+    --gradient-end: #2575fc; /* Biru */
+}
+
+/* General Body and Font Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://cdn.prod.website-files.com/6521c433a8425011fae8b86f/6521c433a8425011fae8b966_linkedin_1200x628_4%20(1).jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.chat-container {
+    width: 95%;
+    max-width: 700px;
+    /* background putih semi transparan supaya latar gambar tetap terlihat */
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    position: relative;
+}
+
+/* Chat Header Styles */
+.chat-header {
+    background-color: #ffffff; /* Header putih */
+    padding: 18px 25px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 1em; /* Ukuran teks judul relatif */
+    color: var(--primary-color); /* Warna judul */
+}
+
+/* Chatbox (Message Display Area) Styles */
+.chatbox {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bot-message-bg); /* Warna latar chatbox */
+    /* Animasi fade-in awal (opsional) */
+    /* opacity: 0; */
+    /* animation: fadeIn 0.5s forwards; */
+}
+
+/* Styling Individual Messages */
+.message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.message-content {
+     display: flex;
+     flex-direction: column; /* Isi bubble diatur vertikal (jika ada nama/waktu) */
+     /* max-width: calc(100% - 40px); /* Kurangi lebar untuk avatar */
+}
+
+.message-bubble {
+    padding: 12px 18px;
+    border-radius: 20px; /* Sudut bubble */
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    font-size: 0.95rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  user-select: none;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.bot-message {
+    align-self: flex-start; /* Pesan bot di kiri */
+    flex-direction: row; /* Avatar di kiri, bubble di kanan */
+}
+
+.bot-message .avatar {
+    background-color: var(--primary-color); /* Warna avatar bot */
+    margin-right: 10px; /* Jarak avatar dan bubble bot */
+    /* Tambahkan icon bot (opsional) */
+    /* content: '🤖'; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.2em; */
+}
+
+.bot-message .message-bubble {
+    background-color: #ffffff; /* Warna putih untuk bot */
+    color: var(--text-color);
+    border-bottom-left-radius: 5px; /* Sudut bawah kiri tajam */
+}
+
+.user-message {
+    align-self: flex-end; /* Pesan user di kanan */
+    flex-direction: row-reverse; /* Avatar di kanan, bubble di kiri */
+}
+
+.user-message .avatar {
+    background-color: #a0a0a0; /* Warna avatar user */
+    margin-left: 10px; /* Jarak avatar dan bubble user */
+    /* content: '👤'; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.2em; */
+}
+
+.user-message .message-bubble {
+    background-color: var(--primary-color); /* Warna utama untuk user */
+    color: white;
+    border-bottom-right-radius: 5px; /* Sudut bawah kanan tajam */
+}
+
+/* User Input Area Styles */
+.user-input-area {
+    display: flex;
+    padding: 15px 25px;
+    border-top: 1px solid var(--border-color);
+    background-color: #ffffff;
+    align-items: center;
+    gap: 10px; /* Jarak antar elemen input */
+}
+
+.user-input-area input {
+    flex-grow: 1;
+    padding: 12px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f8f8; /* Warna latar input */
+}
+
+.user-input-area input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(var(--primary-color-rgb), 0.2); /* Efek shadow saat focus */
+    background-color: #ffffff;
+}
+
+.user-input-area button {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.user-input-area button:hover {
+    background-color: #3a82cc; /* Warna sedikit lebih gelap saat hover */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-input-area button:active {
+    transform: scale(0.96); /* Efek klik menekan */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar Styling (Webkit) */
+.chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbox::-webkit-scrollbar-track {
+    background: var(--bot-message-bg);
+}
+
+.chatbox::-webkit-scrollbar-thumb {
+    background: #ced4da;
+    border-radius: 4px;
+}
+
+.chatbox::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+/* Optional: Animation for messages fading in (requires JS to add class) */
+/*
+.message.fade-in {
+    animation: messageFadeIn 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes messageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+*/
+
+
+/* Basic Responsiveness */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 100%;
+        height: 100vh; /* Penuhi layar di HP */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+     body {
+      padding: 0;
+      align-items: flex-start; /* Ratakan ke atas */
+     }
+
+    .chat-header {
+        padding: 15px 20px;
+        font-size: 1.1em;
+    }
+
+    .chatbox {
+        padding: 15px;
+    }
+
+     .message {
+        max-width: 95%; /* Lebar pesan di HP */
+     }
+
+    .message-bubble {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .avatar {
+        width: 25px;
+        height: 25px;
+    }
+
+    .bot-message .avatar { margin-right: 8px; }
+    .user-message .avatar { margin-left: 8px; }
+
+
+    .user-input-area {
+        padding: 12px 15px;
+        gap: 8px;
+    }
+
+    .user-input-area input {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .user-input-area button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
