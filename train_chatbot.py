@@ -16,7 +16,7 @@ documents = []
 ignore_words = ['?', '!', '.', ','] # Kata-kata yang diabaikan
 
 # Muat data intents dari file JSON
-with open('intents.json') as f:
+with open('intents.json', encoding='utf-8') as f:
     intents = json.load(f)
 
 # Loop melalui setiap intent
